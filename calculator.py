@@ -64,14 +64,14 @@ def get_float_input(prompt: str) -> float:
         try:
             return float(input(prompt))
         except ValueError:
-            print("❌ შეცდომა: გთხოვთ შეიყვანოთ ვალიდური რიცხვი!")
+            print(" შეცდომა: გთხოვთ შეიყვანოთ ვალიდური რიცხვი!")
 
 
 def main():
     calc = Calculator()
 
     while True:
-        print("\n=== 🧮 კალკულატორი ===")
+        print("\n===  კალკულატორი ===")
         print("1. გამოთვლის შესრულება")
         print("2. ისტორიის ნახვა")
         print("3. ისტორიის წაშლა")
@@ -84,7 +84,7 @@ def main():
             op_symbol = input("შეიყვანეთ ოპერატორი (+, -, *, /): ").strip()
 
             if op_symbol not in calc.operations:
-                print("❌ არასწორი ოპერატორი!")
+                print(" არასწორი ოპერატორი!")
                 continue
 
             num2 = get_float_input("შეიყვანეთ მეორე რიცხვი: ")
@@ -93,14 +93,14 @@ def main():
                 operation = calc.operations[op_symbol]
                 result = operation.calculate(num1, num2)
                 record = f"{num1} {op_symbol} {num2} = {result}"
-                print(f"✅ შედეგი: {result}")
+                print(f" შედეგი: {result}")
                 calc.save_to_history(record)
             except ZeroDivisionError as e:
-                print(f"❌ {e}")
+                print(f" {e}")
 
         elif choice == "2":
             history = calc.read_history()
-            print("\n--- 📜 გამოთვლების ისტორია ---")
+            print("\n---  გამოთვლების ისტორია ---")
             if not history:
                 print("ისტორია ცარიელია.")
             else:
@@ -109,13 +109,13 @@ def main():
 
         elif choice == "3":
             calc.clear_history()
-            print("🗑️ ისტორია წარმატებით წაიშალა!")
+            print(" ისტორია წარმატებით წაიშალა!")
 
         elif choice == "4":
-            print("გმადლობთ კალკულატორით სარგებლობისთვის! 🖐️")
+            print("გმადლობთ კალკულატორით სარგებლობისთვის! ")
             break
         else:
-            print("❌ არასწორი არჩევანი, სცადეთ თავიდან.")
+            print(" არასწორი არჩევანი, სცადეთ თავიდან.")
 
 if __name__ == "__main__":
     main()
